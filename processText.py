@@ -2,11 +2,8 @@ import text_recognition as tr
 import re
 
 
-
-
-
 def main():
-    processedText = tr.processing('images/kuba.jpg')
+    processedText = tr.processing('images/skanerprzegryww/02.jpg')
     lines = processedText.split('\n')
     print(lines)
     name = lines[0]
@@ -25,12 +22,11 @@ def main():
             else:
                 release = release[1:]
 
-
         if re.match("Nr alb", lines[i]):
             studentsNumber = int(re.sub("Nr albumu: ", ' ', lines[i], 1))
 
         if re.match("PESEL.", lines[i]):
-            pesel = re.sub("PESEL.", ' ', lines[i],1)
+            pesel = re.sub("PESEL.", ' ', lines[i], 1)
             if pesel[1] == ":":
                 pesel = pesel[2:]
             else:
@@ -52,6 +48,7 @@ def main():
     print(int(pesel))
     print(address)
     print(city)
+
 
 if __name__ == '__main__':
     main()
